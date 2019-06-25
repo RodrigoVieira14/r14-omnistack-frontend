@@ -5,7 +5,7 @@ import pt from 'date-fns/locale/pt';
 import Dropzone from 'react-dropzone';
 import socket from 'socket.io-client';
 
-import { MdInsertDriveFile } from 'react-icons/md';
+import { MdInsertDriveFile, MdKeyboardBackspace } from 'react-icons/md';
 
 import logo from "../../assets/logo.png";
 import './styles.css';
@@ -22,6 +22,9 @@ export default class Box extends Component {
     const response = await api.get(`boxes/${box}`);
     
     this.setState({ box: response.data });
+
+    console.log(this.state.box);
+
   }
 
   subscribeToNewFiles = () => {
@@ -53,9 +56,11 @@ export default class Box extends Component {
     return (
         <div id="box-container">
             <header>
+                <a href="/box/show/all"><MdKeyboardBackspace size={34} color="#000" /></a>
                 <img src={logo} alt="" />
                 <h1>{ this.state.box.title }</h1>
             </header>
+            {console.log(this.state.box.files)}
             
             <Dropzone onDropAccepted={ this.handleUpload }>
                 {({ getRootProps, getInputProps }) => (
