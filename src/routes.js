@@ -8,7 +8,7 @@ import BoxesAll from './pages/BoxesAll';
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route path="/" exact component={Main} />
+            <Route path="/" exact component={BoxesAll} />
             <Route path="/box/:id" exact component={Box} />
             <Route path="/box/show/all" component={BoxesAll} />
         </Switch>
